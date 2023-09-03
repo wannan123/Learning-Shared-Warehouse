@@ -32,3 +32,26 @@ int main()
     
     return 0;
 }
+
+
+//题解2： 利用下表来标记出现过的数字
+#include <algorithm>
+class Solution2 {
+public:
+    vector<int> findDisappearedNumbers(vector<int>& nums) {
+        vector<int> ret;
+        int b[nums.size()+1];
+        for(size_t i = 0; i <= nums.size(); i++){
+            b[i] = 0;
+        }
+        for(auto & num : nums){
+            b[num] = 1;
+        }
+        for(size_t i = 1; i <= nums.size(); i++){
+            if(b[i] != 1){
+                ret.push_back(i);       
+            }
+        }
+        return ret;
+    }
+};
